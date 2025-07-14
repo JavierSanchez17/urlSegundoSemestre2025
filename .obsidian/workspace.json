@@ -1,0 +1,203 @@
+{
+  "main": {
+    "id": "e5a024e8bb692264",
+    "type": "split",
+    "children": [
+      {
+        "id": "e6f84a4ce67b1e7c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c0f0eebcfc7aedf9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Ética Aplicada/Clase 02.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Clase 02"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ed06be52f8a6e57c",
+    "type": "split",
+    "children": [
+      {
+        "id": "13417854adb90883",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0ee50112bf2a2caa",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "19e56b4ae35aee0e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "831fb9f0c4b4e298",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "96af459de7724b82",
+    "type": "split",
+    "children": [
+      {
+        "id": "797770d7d8dbfcd6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0a2229f2f321e4c6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Programación Web/Clase 01.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Clase 01"
+            }
+          },
+          {
+            "id": "6a806ca68af8ac8b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Programación Web/Clase 01.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Clase 01"
+            }
+          },
+          {
+            "id": "d36dc8ec3163a65d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "7d92d6d51a463408",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Programación Web/Clase 01.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Clase 01"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "c0f0eebcfc7aedf9",
+  "lastOpenFiles": [
+    "urlSegundoSemestre2025-GitHub/README.md",
+    "urlSegundoSemestre2025-GitHub",
+    "urlSegundoSemestre2025/README.md",
+    "urlSegundoSemestre2025",
+    "Ética Aplicada/Reflexión Inicial Sobre Ética.pdf",
+    "Ética Aplicada/Clase 02.md",
+    "Arquitectura del Computador/Clase 03.md",
+    "Programación Web/Images",
+    "Ingeniería Económica/Images",
+    "Ingeniería de Software l/Images",
+    "Ética Aplicada/Images",
+    "Bases de Datos ll/Images",
+    "Bases de Datos ll/Untitled.md",
+    "Arquitectura del Computador/Images",
+    "Bases de Datos ll/Clase 02.md",
+    "Ética Aplicada/Clase 01.md",
+    "Programación Web/Clase 02.md",
+    "Arquitectura del Computador/Clase 02.md",
+    "Arquitectura del Computador/TareaConvertirBases/__pycache__/baseConverter.cpython-313.pyc",
+    "Arquitectura del Computador/Images/Pasted image 20250711115329.png",
+    "Programación Web/Clase 01.md",
+    "Bases de Datos ll/Clase 01.md",
+    "Ingeniería Económica/Clase 02.md",
+    "Ingeniería Económica/Clase 01.md",
+    "Ingeniería de Software l/RESUMEN Lectura 1.md",
+    "Ingeniería de Software l/Clase 01.md",
+    "Untitled.md",
+    "Arquitectura del Computador/Clase 01.md",
+    "Welcome.md"
+  ]
+}
