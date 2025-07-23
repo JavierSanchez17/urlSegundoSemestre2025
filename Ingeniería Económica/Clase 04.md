@@ -1,0 +1,2 @@
+# Resolución de caso 1
+![[RESOLUCION DE CASO ECONOMICO FINANCIERO NUMERO 1.pdf]]
