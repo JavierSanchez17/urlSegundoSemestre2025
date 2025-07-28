@@ -12,18 +12,36 @@ from detail_comic_window import DetailComicWindow
 
 
 
-# -- PARTE DEL PROYECTO MARVEL API --
+
 def get_comics_ascendent(page, limit):
     global total_pages
     params = {
         "apikey": public_key,
         "ts": timestamp,
-        "hash": ultra_secret.hexdigest(),
+        "hash": auth_hash.hexdigest(),
         "limit": limit,
         "offset": page * limit
     }
 
     response = requests.get(f"{endpoint}{resource_comics_ascendent}", params=params)
+    data = response.json()["data"]
+    total = data["total"]
+    total_pages = math.ceil(total / limit)
+    comics = data
+    return comics
+
+
+def get_comics_date(page, limit):
+    global total_pages
+    params = {
+        "apikey": public_key,
+        "ts": timestamp,
+        "hash": auth_hash.hexdigest(),
+        "limit": limit,
+        "offset": page * limit
+    }
+
+    response = requests.get(f"{endpoint}{resource_comics_date}", params=params)
     data = response.json()["data"]
     total = data["total"]
     total_pages = math.ceil(total / limit)
@@ -37,7 +55,7 @@ def get_comics_search_title(page, limit, title):
     params = {
         "apikey": public_key,
         "ts": timestamp,
-        "hash": ultra_secret.hexdigest(),
+        "hash": auth_hash.hexdigest(),
         "limit": limit,
         "offset": page * limit
     }
@@ -50,17 +68,17 @@ def get_comics_search_title(page, limit, title):
     return comics
 
 
-def get_comics_date(page, limit):
+def get_comics_search_date(page, limit, date):
     global total_pages
     params = {
         "apikey": public_key,
         "ts": timestamp,
-        "hash": ultra_secret.hexdigest(),
+        "hash": auth_hash.hexdigest(),
         "limit": limit,
         "offset": page * limit
     }
 
-    response = requests.get(f"{endpoint}{resource_comics_date}", params=params)
+    response = requests.get(f"{endpoint}comics?startYear={date}", params=params)
     data = response.json()["data"]
     total = data["total"]
     total_pages = math.ceil(total / limit)
@@ -76,25 +94,6 @@ def generate_image_load(comicURl, comicExtension):
     return image_generated
 
 
-def get_comics_search_date(page, limit, date):
-    global total_pages
-    params = {
-        "apikey": public_key,
-        "ts": timestamp,
-        "hash": ultra_secret.hexdigest(),
-        "limit": limit,
-        "offset": page * limit
-    }
-
-    response = requests.get(f"{endpoint}comics?startYear={date}", params=params)
-    data = response.json()["data"]
-    total = data["total"]
-    total_pages = math.ceil(total / limit)
-    comics = data
-    return comics
-
-
-# -- PARTE DEL PROYECTO MARVEL API --
 endpoint = 'https://gateway.marvel.com/v1/public/'
 resource_characters = 'characters'
 resource_comics_ascendent = 'comics?orderBy=title'
@@ -104,7 +103,7 @@ public_key = '3a8d20be0b21934df76336d1718650b9'
 secret_key = '2abfd64c04eb658f49ff81f1bf4fbd942c33d5a0'
 
 access = f"{timestamp}{secret_key}{public_key}"
-ultra_secret = hashlib.md5(access.encode())
+auth_hash = hashlib.md5(access.encode())
 
 total_pages = 0
 global page
@@ -115,9 +114,6 @@ global option
 option = 1
 list_comics = []
 comics = get_comics_ascendent(page, limit)
-
-
-# -- PARTE DEL PROYECTO MARVEL API --
 
 
 class ComicsWindow(QMainWindow):
@@ -159,7 +155,6 @@ class ComicsWindow(QMainWindow):
         self.btnComicOrderByDate.clicked.connect(self.order_by_date)
         self.btnComicSearchName.clicked.connect(self.search_name)
         self.btnComicSearchDate.clicked.connect(self.search_date)
-    # --------------------------------- Inicia Funcion loadItems() ---------------------------------
 
     def load_items(self):
         global option
@@ -222,8 +217,6 @@ class ComicsWindow(QMainWindow):
         self.comicPagesCount.setText(
             f'<html><head/><body><p align="center"><span style=" font-size:12pt;">Pagina '
             f'{page + 1} de {total_pages}</span></p></body></html>')
-
-    # --------------------------------- Termina Funcion loadItems() ---------------------------------
 
     def no_result(self):
         self.comicName_c1.setText(
