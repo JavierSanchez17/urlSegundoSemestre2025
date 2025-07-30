@@ -12,9 +12,9 @@ app.secret_key = secrets.token_hex(16)
 DB_CONFIG = {
     "host": "localhost",
     "user": "root",
-    "password": "S@nchez695313",  # Cambia por tu contraseña real
+    "password": "S@nchez695313", 
     "database": "transacciones_demo",
-    "autocommit": False  # Importante: desactivar autocommit
+    "autocommit": False  
 }
 
 # Diccionario global para mantener conexiones por sesión
@@ -22,7 +22,7 @@ connections = {}
 connections_lock = threading.Lock()
 
 def get_db_connection():
-    """Crea y retorna una nueva conexión a la base de datos"""
+    # Conexión a la base de datos MySQL
     try:
         connection = mysql.connector.connect(**DB_CONFIG)
         return connection
@@ -31,7 +31,7 @@ def get_db_connection():
         return None
 
 def get_session_connection():
-    """Obtiene o crea una conexión específica para esta sesión"""
+    # Obtiene o crea una conexión específica para esta sesión
     if 'session_id' not in session:
         session['session_id'] = secrets.token_hex(8)
         session.permanent = True
@@ -57,7 +57,6 @@ def get_session_connection():
         return connections[session_id]['connection']
 
 def close_session_connection():
-    """Cierra la conexión de la sesión actual"""
     if 'session_id' not in session:
         return
         
@@ -82,7 +81,6 @@ def close_session_connection():
             del connections[session_id]
 
 def cleanup_old_connections():
-    """Limpia conexiones antiguas (llamar periódicamente)"""
     current_time = time.time()
     timeout = 300  # 5 minutos
     
@@ -137,18 +135,18 @@ def api():
                 return jsonify({"success": False, "message": "No se pudo conectar a la base de datos"})
             
             try:
-                # Iniciar transacción REAL en MySQL
+                # Iniciar transacción en MySQL
                 connection.start_transaction()
                 session['transaction_active'] = True
                 session['inserted_count'] = 0
                 session.modified = True
                 
-                print(f"[DEBUG] TRANSACCIÓN REAL iniciada en MySQL para sesión: {session.get('session_id')}")
+                print(f"[DEBUG] TRANSACCIÓN iniciada en MySQL para sesión: {session.get('session_id')}")
                 print(f"[DEBUG] Estado de conexión - En transacción: {connection.in_transaction}")
                 
                 return jsonify({
                     "success": True,
-                    "message": "Transacción REAL iniciada en MySQL. Los datos se insertarán en la BD pero no serán visibles hasta el COMMIT.",
+                    "message": "Transacción iniciada en MySQL. Los datos se insertarán en la BD pero no serán visibles hasta el COMMIT.",
                     "transaction_id": session.get('session_id'),
                     "type": "REAL_MYSQL_TRANSACTION"
                 })
@@ -175,7 +173,7 @@ def api():
             try:
                 cursor = connection.cursor()
                 
-                # ¡INSERCIÓN REAL en MySQL!
+                # Insertar el dato en la base de datos
                 query = "INSERT INTO persona (nombre) VALUES (%s)"
                 cursor.execute(query, (nombre,))
                 inserted_id = cursor.lastrowid
@@ -220,7 +218,7 @@ def api():
                 if inserted_count == 0:
                     return jsonify({"success": False, "message": "No hay datos para confirmar"})
                 
-                # ¡COMMIT REAL!
+                # COMMIT
                 connection.commit()
                 
                 # Limpiar sesión y cerrar conexión
@@ -260,7 +258,7 @@ def api():
             try:
                 inserted_count = session.get('inserted_count', 0)
                 
-                # ¡ROLLBACK REAL!
+                # ROLLBACK
                 connection.rollback()
                 
                 # Limpiar sesión y cerrar conexión
@@ -287,7 +285,7 @@ def api():
         elif action == "get_data":
             print(f"[DEBUG] Obteniendo datos con conexión INDEPENDIENTE (solo datos confirmados)")
             
-            # Usar conexión SEPARADA para ver solo datos confirmados
+            # Usar otra conexion para obtener datos
             connection = get_db_connection()
             if not connection:
                 return jsonify({
